@@ -7,6 +7,7 @@ import {
   Inter_300Light,
   Inter_800ExtraBold,
   Inter_400Regular,
+  Inter_700Bold,
 } from "@expo-google-fonts/inter";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
@@ -19,6 +20,7 @@ export default function App() {
     Inter900: Inter_900Black,
     Inter300: Inter_300Light,
     Inter400: Inter_400Regular,
+    InterBold: Inter_700Bold,
   });
 
   useEffect(() => {

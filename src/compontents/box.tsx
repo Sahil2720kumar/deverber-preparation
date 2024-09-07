@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#0A0A0A",
     flex: 1,
     aspectRatio: 1,
-
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: "black",
     borderRadius: 20,
