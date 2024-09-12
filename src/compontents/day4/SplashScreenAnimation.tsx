@@ -19,7 +19,7 @@ const SplashScreenAnimation = ({
   return (
     <Animated.View entering={FadeIn.duration(300)} style={styles.page}>
       <AnimatedLottieView
-        entering={FadeIn.duration(1000)}
+        entering={FadeIn.duration(200)}
         exiting={ZoomOut.duration(1000)}
         autoPlay
         ref={animationRef}

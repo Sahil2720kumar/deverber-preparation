@@ -6,11 +6,8 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 
 const DayScreen = () => {
   return (
-    <View style={{ backgroundColor: "black", flex: 1, padding: 10 }}>
-      <Stack.Screen options={{ title: `Day 3` }} />
-      {/* <Text style={{ color: "white", fontSize: 20, fontFamily: "Inter400" }}>
-        DayTwo
-      </Text>*/}
+    <View style={{ backgroundColor: "black", flex: 1, padding: 10, gap: 10 }}>
+      <Stack.Screen options={{ title: `Day 5: AirBNP map` }} />
       <Text
         style={{
           marginBottom: 10,
@@ -19,10 +16,11 @@ const DayScreen = () => {
           fontFamily: "Inter800",
         }}
       >
-        MarkDown Editor Screen Setup{" "}
+        Airbnb Clone (Maps only)
       </Text>
-      <Link asChild href={"(days)/day3/editor"}>
-        <Button text={`Go To`} />
+
+      <Link asChild href={"(days)/day5/airbnb"}>
+        <Button text={`Maps Go To`} />
       </Link>
     </View>
   );

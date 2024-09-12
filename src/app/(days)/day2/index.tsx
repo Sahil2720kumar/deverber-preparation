@@ -4,7 +4,7 @@ import { Link, Stack } from "expo-router";
 import Button from "@/src/compontents/Button";
 import AntDesign from "@expo/vector-icons/AntDesign";
 
-const DayTwoScreen = () => {
+const DayScreen = () => {
   return (
     <View style={{ backgroundColor: "black", flex: 1, padding: 10 }}>
       <Stack.Screen options={{ title: `Day 2` }} />
@@ -28,6 +28,6 @@ const DayTwoScreen = () => {
   );
 };
 
-export default DayTwoScreen;
+export default DayScreen;
 
 const styles = StyleSheet.create({});

@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { Stack } from "expo-router";
 
-const DayOneScreen = () => {
+const DayScreen = () => {
   return (
     <View style={{ backgroundColor: "black", flex: 1, padding: 10 }}>
       <Stack.Screen options={{ title: `Day 1` }} />
@@ -19,6 +19,6 @@ const DayOneScreen = () => {
   );
 };
 
-export default DayOneScreen;
+export default DayScreen;
 
 const styles = StyleSheet.create({});

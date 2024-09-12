@@ -1,0 +1,112 @@
+[
+    {
+        "id": 1,
+        "name": "Kali Bari Residence",
+        "description": "A cozy and modern apartment in the heart of Kali Bari, Dibrugarh. Ideal for families and business travelers.",
+        "star": 4,
+        "rating": 4.2,
+        "price": 3500,
+        "image": "https://example.com/images/kali_bari_residence.jpg",
+        "latitude": 27.4834,
+        "longitude": 94.9054
+    },
+    {
+        "id": 2,
+        "name": "Dibrugarh Comfort Stay",
+        "description": "Enjoy a comfortable stay with all modern amenities at Dibrugarh Comfort Stay. Perfect for a relaxing retreat.",
+        "star": 3,
+        "rating": 3.8,
+        "price": 2800,
+        "image": "https://example.com/images/dibrugarh_comfort_stay.jpg",
+        "latitude": 27.4840,
+        "longitude": 94.9060
+    },
+    {
+        "id": 3,
+        "name": "Luxury Dibrugarh Suite",
+        "description": "Experience luxury with a fully equipped suite featuring elegant decor and premium facilities.",
+        "star": 5,
+        "rating": 4.7,
+        "price": 5000,
+        "image": "https://example.com/images/luxury_dibrugarh_suite.jpg",
+        "latitude": 27.4829,
+        "longitude": 94.9072
+    },
+    {
+        "id": 4,
+        "name": "The Dibrugarh Inn",
+        "description": "A budget-friendly apartment offering a simple and comfortable stay with basic amenities.",
+        "star": 2,
+        "rating": 3.2,
+        "price": 2000,
+        "image": "https://example.com/images/dibrugarh_inn.jpg",
+        "latitude": 27.4831,
+        "longitude": 94.9080
+    },
+    {
+        "id": 5,
+        "name": "Green Valley Apartments",
+        "description": "A serene and green environment with spacious apartments and modern amenities.",
+        "star": 4,
+        "rating": 4.3,
+        "price": 3700,
+        "image": "https://example.com/images/green_valley_apartments.jpg",
+        "latitude": 27.4852,
+        "longitude": 94.9048
+    },
+    {
+        "id": 6,
+        "name": "City Center Lodge",
+        "description": "Conveniently located near the city center with easy access to shopping and dining.",
+        "star": 3,
+        "rating": 3.9,
+        "price": 3000,
+        "image": "https://example.com/images/city_center_lodge.jpg",
+        "latitude": 27.4818,
+        "longitude": 94.9068
+    },
+    {
+        "id": 7,
+        "name": "Comfort Suites Dibrugarh",
+        "description": "Well-furnished suites offering both comfort and style for a relaxing stay.",
+        "star": 4,
+        "rating": 4.5,
+        "price": 4200,
+        "image": "https://example.com/images/comfort_suites_dibrugarh.jpg",
+        "latitude": 27.4826,
+        "longitude": 94.9085
+    },
+    {
+        "id": 8,
+        "name": "Dibrugarh Heritage Stay",
+        "description": "Experience the charm of traditional Dibrugarh with heritage-themed apartments.",
+        "star": 3,
+        "rating": 3.7,
+        "price": 2900,
+        "image": "https://example.com/images/dibrugarh_heritage_stay.jpg",
+        "latitude": 27.4860,
+        "longitude": 94.9032
+    },
+    {
+        "id": 9,
+        "name": "Elegant Dibrugarh Residence",
+        "description": "Modern and elegant residence with all necessary facilities for a comfortable stay.",
+        "star": 4,
+        "rating": 4.4,
+        "price": 3800,
+        "image": "https://example.com/images/elegant_dibrugarh_residence.jpg",
+        "latitude": 27.4845,
+        "longitude": 94.9090
+    },
+    {
+        "id": 10,
+        "name": "The Relaxation Hub",
+        "description": "A peaceful retreat with relaxation-focused amenities and beautiful surroundings.",
+        "star": 5,
+        "rating": 4.8,
+        "price": 5200,
+        "image": "https://example.com/images/relaxation_hub.jpg",
+        "latitude": 27.4807,
+        "longitude": 94.9059
+    }
+]

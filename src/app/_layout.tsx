@@ -52,11 +52,7 @@ const RootLayout = () => {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <Animated.View
-        style={{ flex: 1 }}
-        entering={FadeIn.duration(1000)}
-        exiting={FadeOut}
-      >
+      <Animated.View style={{ flex: 1 }} entering={FadeIn} exiting={FadeOut}>
         <Stack
           screenOptions={{
             headerStyle: { backgroundColor: "#0A0A0A" },
