@@ -4,12 +4,22 @@ import Entypo from "@expo/vector-icons/Entypo";
 import { Audio, AVPlaybackStatus } from "expo-av";
 import { Sound } from "expo-av/build/Audio";
 import Animated, {
+  Extrapolate,
+  Extrapolation,
+  interpolate,
   useAnimatedStyle,
   withDelay,
   withTiming,
 } from "react-native-reanimated";
 
-const AudioListItem = ({ uri }: { uri: string }) => {
+export type Memo = {
+  uri: string;
+  metering: number[];
+};
+
+const AudioListItem = ({ memo }: { memo: Memo }) => {
+  //console.log("Memo: ", memo);
+
   const [sound, setSound] = useState<Sound>();
   const [status, setStatus] = useState<AVPlaybackStatus>();
   const soundRef = useRef<Sound | null>(null);
@@ -28,7 +38,7 @@ const AudioListItem = ({ uri }: { uri: string }) => {
 
   async function loadSound() {
     const { sound } = await Audio.Sound.createAsync(
-      { uri },
+      { uri: memo.uri },
       { progressUpdateIntervalMillis: 1000 / 60 },
       onPlaybackStatusUpdate,
     );
@@ -38,7 +48,8 @@ const AudioListItem = ({ uri }: { uri: string }) => {
 
   async function playSound() {
     if (!sound) return;
-
+    console.log(memo.metering);
+    console.log("lines: ", lines);
     if (status?.isLoaded && status.isPlaying) {
       await sound.pauseAsync();
     } else if (
@@ -46,13 +57,13 @@ const AudioListItem = ({ uri }: { uri: string }) => {
       status?.positionMillis === status.durationMillis
     ) {
       withDelay(3000, {});
-      console.warn("jst finsished");
+      //console.warn("jst finsished");
       sound?.setPositionAsync(0);
     } else {
       await sound.playAsync();
     }
 
-    console.log(status);
+    //console.log(status);
   }
 
   const onPlaybackStatusUpdate = useCallback(
@@ -66,7 +77,7 @@ const AudioListItem = ({ uri }: { uri: string }) => {
 
   useEffect(() => {
     loadSound();
-  }, [uri]);
+  }, [memo]);
 
   useEffect(() => {
     // TODO: Check when expo-av updates. setOnPlaybackStatusUpdate works incorrectly:
@@ -105,6 +116,27 @@ const AudioListItem = ({ uri }: { uri: string }) => {
     left: withTiming(`${progress * 100}%`, { duration: 500 }),
     //left: `${progress * 100}%`,
   }));
+
+  const animatedPlaybackBackground = useAnimatedStyle(() => ({
+    right: withTiming(`${100 - progress * 100}%`, { duration: 500 }), // animate left based on progress
+    //right: "75%",
+    backgroundColor: "white",
+  }));
+
+  let numLines = 50;
+  let lines = [];
+
+  for (let i = 0; i < numLines; i++) {
+    const meteringIndex = Math.floor((i * memo.metering.length) / numLines);
+    const nextMeteringIndex = Math.ceil(
+      ((i + 1) * memo.metering.length) / numLines,
+    );
+    const values = memo.metering.slice(meteringIndex, nextMeteringIndex);
+    const average = values.reduce((sum, a) => sum + a, 0) / values.length;
+    // lines.push(memo.metering[meteringIndex]);
+    lines.push(average);
+  }
+
   return (
     <View style={styles.container}>
       <Entypo
@@ -114,10 +146,34 @@ const AudioListItem = ({ uri }: { uri: string }) => {
         color="white"
       />
       <View style={styles.playbackContainer}>
-        <View style={styles.playbackBackground}>
+        {/*<View style={styles.playbackBackground}>
+          <Animated.View
+            style={[styles.coverPlaybackBackground, animatedPlaybackBackground]}
+          />
+
           <Animated.View
             style={[styles.playbackBall, animatedPlaybackIndicator]}
           />
+        </View>*/}
+        <View style={styles.wave}>
+          {lines.map((db, index) => (
+            <View
+              style={[
+                styles.waveLine,
+                {
+                  height: interpolate(
+                    db,
+                    [-60, 0],
+                    [5, 50],
+                    Extrapolation.CLAMP,
+                  ),
+                  backgroundColor:
+                    progress > index / lines.length ? "royalblue" : "gainsboro",
+                },
+              ]}
+              key={index}
+            />
+          ))}
         </View>
         <View style={styles.timeStamp}>
           <Text style={styles.duration}>{formatMilliseconds(position)}/</Text>
@@ -135,7 +191,7 @@ export default AudioListItem;
 
 const styles = StyleSheet.create({
   container: {
-    height: 80,
+    height: 100,
     backgroundColor: "#0A0A0A",
     borderRadius: 20,
     alignItems: "center",
@@ -165,11 +221,31 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     borderRadius: 10,
     backgroundColor: "white",
+    zIndex: 999,
+  },
+  coverPlaybackBackground: {
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    left: 0,
+    zIndex: 99,
+  },
+  wave: {
+    flex: 1,
+    flexDirection: "row",
+    gap: 3,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  waveLine: {
+    flex: 1,
+    backgroundColor: "white",
+    borderRadius: 20,
   },
   timeStamp: {
     position: "absolute",
     right: 0,
-    bottom: -8,
+    bottom: -10,
     flexDirection: "row",
   },
 
